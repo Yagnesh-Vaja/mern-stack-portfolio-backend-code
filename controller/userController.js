@@ -144,7 +144,7 @@ export const updateProfile = catchAsyncErrors(async (req, res, next) => {
         const resume = req.files.resume;
         const user = await User.findById(req.user.id);
         const profileImageId = user.resume.public_id;
-        await cloudinary.uploader.destroy(resumeId)
+        await cloudinary.uploader.destroy(profileImageId)
         const cloudinaryResponse = await cloudinary.uploader.upload(
             resume.tempFilePath,
             { folder: "MY_RESUME" }
